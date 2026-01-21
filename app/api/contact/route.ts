@@ -32,7 +32,7 @@ export async function POST(req: Request) {
         ? services.join(", ")
         : "Not specified";
 
-    /* Admin mail */
+    /* Admin email */
     const adminMail = {
       from: `"Website Lead" <${process.env.SMTP_USER}>`,
       to: process.env.ADMIN_EMAIL,
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       `,
     };
 
-    /* User mail */
+    /* User thank-you email */
     const userMail = {
       from: `"GrowthPlug Agency" <${process.env.SMTP_USER}>`,
       to: safeEmail,
@@ -69,19 +69,17 @@ We have received your message and will get back to you shortly.
       `,
     };
 
-    /* 🚀 Option 3: Fire-and-forget email sending */
-    Promise.all([
+    /* ✅ Wait for both emails to finish */
+    await Promise.all([
       transporter.sendMail(adminMail),
       transporter.sendMail(userMail),
-    ]).catch((err) => {
-      console.error("Background email error:", err);
-    });
+    ]);
 
-    /* ✅ Respond immediately */
+    /* ✅ Respond only after success */
     return Response.json({ success: true });
 
   } catch (error) {
-    console.error("API Error:", error);
+    console.error("Email API Error:", error);
     return Response.json(
       { success: false, message: "Email failed" },
       { status: 500 }
