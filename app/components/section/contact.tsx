@@ -5,10 +5,10 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-16 bg-gradient-to-b from-[#f7f2ff] to-white"
+      className="py-16 bg-gradient-to-b from-[#FAF9F6] to-[#6ccfcf]"
     >
       <div className="max-w-4xl mx-auto px-6">
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
+        <div className="bg-[#f7f2ff] rounded-2xl shadow-xl p-8 md:p-10">
 
           {/* Header */}
           <div className="mb-8 text-center">

@@ -1,6 +1,6 @@
 'use client';
 
-// import Image from "next/image";
+import Image from "next/image";
 import { Shield, BarChart3, Globe, TrendingUp, LucideIcon } from "lucide-react";
 
 interface CardProps {
@@ -52,7 +52,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
+      className="min-h-screen flex items-center bg-gradient-to-b from-white to-[#6ccfcf] relative overflow-hidden"
     >
       {/* Background blobs */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -92,16 +92,18 @@ export default function Hero() {
           {/* Right - Image with floating cards */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[1999/1422]">
-              <img
-                src="https://funnel.io/hs-fs/hubfs/Funnel.io%20Performance%20Dashboard.png?width=1999&height=1422&name=Funnel.io%20Performance%20Dashboard.png"
-                alt="Growth Analytics Dashboard"
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+            <Image
+              src="/hero.webp"
+              alt="Growth Analytics Dashboard"
+              width={1024} 
+              height={600}
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
             </div>
 
             {/* Floating cards */}
-            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-l-4 border-l-[#E13030]">
+            <div className="absolute -bottom-6 -left-6 bg-gray-50 p-4 rounded-lg shadow-xl border-l-4 border-l-[#E13030]">
               <p className="text-sm text-gray-600">ROI Increase</p>
               <p className="text-3xl font-bold text-[#E13030]">
                 {STATS.roiIncrease}

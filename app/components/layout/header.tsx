@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image";
-import Modal from "@/app/components/section/modal"
+import Modal from "@/app/components/layout/modal"
 import ContactForm from "@/app/components/section/contactform"
 
 const navLinks = [

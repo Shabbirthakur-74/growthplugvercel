@@ -78,7 +78,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {SERVICES.map((service) => {
                 return (
-                  <li key={service} className="text-gray-400 hover:text-[#E13030] transition cursor-pointer">
+                  <li key={service} className="text-gray-400 hover:text-[#E13030]">
                     {service}
                   </li>
                 );

@@ -1,15 +1,14 @@
 import { Target, BarChart3 } from "lucide-react";
-// import Image from "next/image";
+import Image from "next/image";
 
 const STATS = [
   { value: "500+", label: "Clients Served" },
-  { value: "10M+", label: "Ad Spend Managed" },
+  { value: "10M+", label: "Ads Managed" },
   { value: "95%", label: "Client Retention" },
 ] as const;
 
 const WORKING_MODEL = [
   "Monthly retainer-based services",
-  "Flagship package: ₹30,000 / month",
   "Ad spend billed directly to client",
   "No long-term lock-in",
   "Clear KPIs before launch",
@@ -37,33 +36,35 @@ const INFO_CARDS = [
 
 export default function AboutUs() {
   return (
-    <section id="aboutus" className="py-20 bg-white">
+    <section id="aboutus" className="py-20 bg-[#aff4f4]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image + Stats */}
           <div className="space-y-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl h-96">
-              <img
-                src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c"
-                alt="GrowthPlug Team"
-                className="object-cover"
-              />
+              <div className="relative w-full max-w-[600px] h-[460px] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/whyus.jpg"
+                  alt="Teams growth"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  priority
+                />
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                {STATS.map((item) => (
+                  <div
+                    key={item.label}
+                    className="text-center p-4 bg-gray-50 rounded-lg"
+                  >
+                    <p className="text-3xl font-bold text-[#E13030]">
+                      {item.value}
+                    </p>
+                    <p className="text-sm text-gray-600">{item.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              {STATS.map((item) => (
-                <div
-                  key={item.label}
-                  className="text-center p-4 bg-[#E13030]/10 rounded-lg"
-                >
-                  <p className="text-3xl font-bold text-[#E13030]">
-                    {item.value}
-                  </p>
-                  <p className="text-sm text-gray-600">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Right - Content */}
           <div className="space-y-6">
@@ -91,7 +92,7 @@ export default function AboutUs() {
             {/* Working Model + Results */}
             <div className="grid md:grid-cols-2 gap-6 pt-6">
               {INFO_CARDS.map(({ icon: Icon, title, items }) => (
-                <div key={title} className="p-5 border rounded-xl">
+                <div key={title} className="p-5 border rounded-xl bg-gray-50">
                   <Icon className="w-6 h-6 text-[#E13030] mb-3" />
                   <h4 className="font-semibold text-black mb-2">{title}</h4>
                   <ul className="text-sm text-gray-600 space-y-1">

@@ -4,9 +4,9 @@ import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 
 const TESTIMONIALS = [
-  "/testimonial.png",
-  "/testimonial2.png",
-  "/testimonial3.png",
+  "/testimonials/testimonial.png",
+  "/testimonials/testimonial2.png",
+  "/testimonials/testimonial3.png",
 ] as const;
 
 const SCROLL_SPEED = 0.5;
@@ -69,7 +69,7 @@ export default function Testimonials() {
   }, [startAutoScroll, stopAutoScroll]);
 
   return (
-    <section id="testimonials" className="relative py-24 bg-gray-50 overflow-hidden">
+    <section id="testimonials" className="relative py-24 bg-gradient-to-b from-[#aff4f4] to-[#FAF9F6] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-14">
@@ -97,7 +97,7 @@ export default function Testimonials() {
             ref={sliderRef}
             onMouseEnter={stopAutoScroll}
             onMouseLeave={startAutoScroll}
-            className="flex gap-8 overflow-hidden"
+            className="flex gap-8 overflow-hidden "
           >
             {TESTIMONIALS.map((src, index) => (
               <div

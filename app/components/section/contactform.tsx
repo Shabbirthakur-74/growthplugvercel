@@ -21,6 +21,8 @@ export default function ContactForm() {
   })
 
   const [selectedServices, setSelectedServices] = useState<string[]>([])
+  const [loading, setLoading] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
 
   const toggleService = (service: string) => {
     setSelectedServices((prev) =>
@@ -36,36 +38,46 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setLoading(true)
 
-    const whatsappNumber = "+918793304350" // ← your WhatsApp number (no +)
+    const payload = {
+      ...form,
+      services: selectedServices.length > 0 ? selectedServices : [],
+    }
 
-    const services =
-      selectedServices.length > 0
-        ? selectedServices.join(", ")
-        : "Not specified"
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
 
-    const text = `
-New Quote Request 🚀
+      if (res.ok) {
+        // ✅ Reset form
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        })
+        setSelectedServices([])
 
-Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Company: ${form.company || "N/A"}
-
-Services:
-${services}
-
-Message:
-${form.message || "N/A"}
-    `
-
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      text
-    )}`
-
-    window.open(url, "_blank")
+        // ✅ Show thank-you popup
+        setShowThankYou(true)
+      } else {
+        alert("Something went wrong. Please try again.")
+      }
+    } catch (err) {
+      console.error(err)
+      alert("Something went wrong. Please try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -80,6 +92,7 @@ ${form.message || "N/A"}
             placeholder="Name*"
             className="input"
             required
+            value={form.name}
             onChange={handleChange}
           />
           <input
@@ -88,6 +101,7 @@ ${form.message || "N/A"}
             placeholder="Email address*"
             className="input"
             required
+            value={form.email}
             onChange={handleChange}
           />
         </div>
@@ -100,6 +114,7 @@ ${form.message || "N/A"}
             placeholder="Phone number*"
             className="input"
             required
+            value={form.phone}
             onChange={handleChange}
           />
           <input
@@ -107,6 +122,7 @@ ${form.message || "N/A"}
             name="company"
             placeholder="Company name"
             className="input"
+            value={form.company}
             onChange={handleChange}
           />
         </div>
@@ -141,6 +157,7 @@ ${form.message || "N/A"}
           name="message"
           placeholder="Briefly describe your needs, goals, timeline, or budget..."
           className="input resize-none"
+          value={form.message}
           onChange={handleChange}
         />
 
@@ -149,11 +166,31 @@ ${form.message || "N/A"}
           <button
             type="submit"
             className="bg-[#E13030] text-white px-10 py-3 rounded-lg font-semibold hover:bg-[#c12828] transition"
+            disabled={loading}
           >
-            Send
+            {loading ? "Sending..." : "Send"}
           </button>
         </div>
       </form>
+
+      {/* ✅ THANK YOU POPUP */}
+      {showThankYou && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
+            <h2 className="text-2xl font-semibold mb-3 text-[#E13030]">Thank you!</h2>
+            <p className="text-gray-600 mb-6">
+              We have received your message and will get back to you shortly.
+            </p>
+
+            <button
+              onClick={() => setShowThankYou(false)}
+              className="bg-[#E13030] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#c12828] transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .input {

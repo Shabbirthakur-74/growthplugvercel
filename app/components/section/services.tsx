@@ -92,7 +92,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 bg-gradient-to-b from-gray-50 to-white"
+      className="py-24 bg-gradient-to-b from-[#6ccfcf] to-[#aff4f4]"
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -113,7 +113,7 @@ export default function ServicesSection() {
             return (
               <Card
                 key={service.title}
-                className="group hover:-translate-y-1.5 hover:shadow-lg border-t-4 border-t-[#E13030]"
+                className="group hover:-translate-y-1.5 hover:shadow-lg border-t-4 border-t-[#E13030] bg-gray-50"
               >
                 <CardContent>
                   <div className="w-14 h-14 rounded-lg bg-[#E13030]/10 flex items-center justify-center text-[#E13030] group-hover:bg-[#E13030] group-hover:text-white transition-colors">
