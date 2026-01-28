@@ -148,9 +148,9 @@ export default function Header() {
 
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2 className="mb-6 text-2xl font-semibold text-[#E13030] text-center ">
-          Let’s Get Started
-        </h2>
+        <h2 className="mb-6 text-2xl font-semibold text-[#E13030] text-center">
+            Let’s Get Started
+          </h2>
         <ContactForm />
       </Modal>
     </>
