@@ -52,7 +52,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         </button>
 
         {/* form */}
-        <div className="max-w-2xl mx-auto p-6">
+        <div className="max-w-lg md:max-w-2xl mx-auto p-4 md:p-6">
           {children}
         </div>
       </div>

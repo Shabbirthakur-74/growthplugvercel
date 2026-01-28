@@ -69,14 +69,14 @@ export default function Testimonials() {
   }, [startAutoScroll, stopAutoScroll]);
 
   return (
-    <section id="testimonials" className="relative py-24 bg-gradient-to-b from-[#aff4f4] to-[#FAF9F6] overflow-hidden">
+    <section id="testimonials" className="relative py-16  md:py-20 bg-[#05054a] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             What Our <span className="text-[#E13030]">Clients Say</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-white max-w-2xl mx-auto">
             Don’t just take our word for it—hear from businesses that have transformed their growth with GrowthPlug.
           </p>
         </div>

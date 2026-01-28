@@ -36,7 +36,7 @@ const INFO_CARDS = [
 
 export default function AboutUs() {
   return (
-    <section id="aboutus" className="py-20 bg-[#aff4f4]">
+    <section id="aboutus" className="py-18 md:py-20 bg-gradient-to-b from-[#05072B] to-[#05054a]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image + Stats */}
@@ -68,7 +68,7 @@ export default function AboutUs() {
 
           {/* Right - Content */}
           <div className="space-y-6">
-            <h2 className="text-4xl lg:text-5xl font-bold text-black">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white">
               About <span className="text-[#E13030]">GrowthPlug Agency</span>
             </h2>
 

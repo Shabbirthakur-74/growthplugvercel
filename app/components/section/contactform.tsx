@@ -82,7 +82,7 @@ export default function ContactForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-6 text-black">
+      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 text-black">
 
         {/* Row 1 */}
         <div className="grid md:grid-cols-2 gap-5">
@@ -184,7 +184,7 @@ export default function ContactForm() {
 
             <button
               onClick={() => setShowThankYou(false)}
-              className="bg-[#E13030] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#c12828] transition"
+              className="bg-[#E13030] text-white px-8 py-5 rounded-lg font-semibold hover:bg-[#c12828] transition"
             >
               Close
             </button>

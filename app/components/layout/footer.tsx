@@ -1,5 +1,13 @@
 'use client';
 
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import { IconType } from "react-icons";
+
 interface NavLink {
   label: string;
   id: string;
@@ -8,6 +16,7 @@ interface NavLink {
 interface SocialLink {
   name: string;
   url: string;
+  icon: IconType;
 }
 
 const NAV_LINKS: NavLink[] = [
@@ -26,24 +35,42 @@ const SERVICES: string[] = [
 ];
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { name: "LinkedIn", url: "#" },
-  { name: "Twitter", url: "#" },
-  { name: "Instagram", url: "#" },
-  { name: "Facebook", url: "#" },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/growthplug-agency/",
+    icon: FaLinkedinIn,
+  },
+  {
+    name: "WhatsApp",
+    url: "https://wa.me/918793304350",
+    icon: FaWhatsapp,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/growthplug_agency/",
+    icon: FaInstagram,
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/profile.php?id=61576019611551",
+    icon: FaFacebookF,
+  },
 ];
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
+    el.scrollIntoView({ behavior: "smooth" });
   }
 }
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black pb-16 md:pb-12 text-white">
       <div className="max-w-7xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+
+          {/* About */}
           <div>
             <h3 className="text-xl font-bold text-[#E13030] mb-4">
               GrowthPlug Agency
@@ -55,56 +82,58 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4 text-base">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              {NAV_LINKS.map((link) => {
-                return (
-                  <li key={link.id}>
-                    <button
-                      onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 hover:text-[#E13030] transition"
-                    >
-                      {link.label}
-                    </button>
-                  </li>
-                );
-              })}
+              {NAV_LINKS.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className="text-gray-400 hover:text-[#E13030] transition"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Services */}
           <div>
             <h4 className="font-semibold mb-4 text-base">Services</h4>
             <ul className="space-y-3 text-sm">
-              {SERVICES.map((service) => {
-                return (
-                  <li key={service} className="text-gray-400 hover:text-[#E13030]">
-                    {service}
-                  </li>
-                );
-              })}
+              {SERVICES.map((service) => (
+                <li
+                  key={service}
+                  className="text-gray-400 hover:text-[#E13030]"
+                >
+                  {service}
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Connect (ICONS ONLY) */}
           <div>
             <h4 className="font-semibold mb-4 text-base">Connect</h4>
-            <ul className="space-y-3 text-sm">
-              {SOCIAL_LINKS.map((social) => {
-                return (
-                  <li key={social.name}>
-                    <a
-                      href={social.url}
-                      className="text-gray-400 hover:text-[#E13030] transition cursor-pointer"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {social.name}
-                    </a>
-                  </li>
-                );
-              })}
+            <ul className="flex flex-col items-start gap-4">
+              {SOCIAL_LINKS.map(({ name, url, icon: Icon }) => (
+                <li key={name}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    className="text-gray-400 hover:text-[#E13030] transition"
+                  >
+                    <Icon size={20} />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
+
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-6 text-center">

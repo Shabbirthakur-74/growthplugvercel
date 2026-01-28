@@ -92,31 +92,31 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 bg-gradient-to-b from-[#6ccfcf] to-[#aff4f4]"
+      className="py-16 bg-gradient-to-b from-[#020024] via-[#05054a] to-[#020024] "
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">
             What <span className="text-[#E13030]">We Do</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Performance-focused digital solutions built to drive leads, sales,
             and measurable growth.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 ">
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (
               <Card
                 key={service.title}
-                className="group hover:-translate-y-1.5 hover:shadow-lg border-t-4 border-t-[#E13030] bg-gray-50"
+                className="group hover:-translate-y-1.5 hover:shadow-lg border-t-4 border-t-[#E13030] bg-gray-100"
               >
                 <CardContent>
-                  <div className="w-14 h-14 rounded-lg bg-[#E13030]/10 flex items-center justify-center text-[#E13030] group-hover:bg-[#E13030] group-hover:text-white transition-colors">
+                  <div className="w-14 h-14 rounded-lg bg-white flex items-center justify-center text-[#E13030] group-hover:bg-[#E13030] group-hover:text-white transition-colors">
                     <Icon className="w-6 h-6" />
                   </div>
 

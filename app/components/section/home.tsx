@@ -52,7 +52,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-b from-white to-[#6ccfcf] relative overflow-hidden"
+      className="min-h-screen flex items-center bg-gradient-to-b from-[#020024] via-[#05054a] to-[#020024] relative overflow-hidden"
     >
       {/* Background blobs */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -63,7 +63,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left - Text content */}
-          <div className="space-y-6 text-black">
+          <div className="space-y-6 text-white">
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
               Plug Into{" "}
               <span className="text-[#E13030]">Scalable Growth</span>{" "}
@@ -71,7 +71,7 @@ export default function Hero() {
               <span className="text-[#E13030]">Measurable ROI</span>
             </h1>
 
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-white leading-relaxed">
               We help brands, founders, and local businesses acquire customers
               profitably using performance marketing systems across Meta,
               Google, and WhatsApp automation.

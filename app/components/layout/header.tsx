@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image";
 import Modal from "@/app/components/layout/modal"
 import ContactForm from "@/app/components/section/contactform"
+import { useEffect } from "react"
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -17,6 +18,21 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  
+        // popup
+  useEffect(() => {
+    const hasSeenPopup = sessionStorage.getItem("quotePopupShown")
+    if (hasSeenPopup) return
+
+    const delay = 4000
+
+    const timer = setTimeout(() => {
+      setIsModalOpen(true)
+      sessionStorage.setItem("quotePopupShown", "true")
+    }, delay)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
@@ -25,13 +41,13 @@ export default function Header() {
           <nav className="flex h-16 items-center justify-between">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center">
+            <Link href="#home" className="flex items-center">
               <Image
                 src="/logo1.png"
                 alt="GrowthPlug Logo"
-                width={800}
+                width={500}
                 height={500}
-                className="h-10 w-auto"
+                className="h-14 w-auto"
               />
             </Link>
 
@@ -53,7 +69,7 @@ export default function Header() {
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="
-                  inline-flex
+                  hidden md:inline-flex
                   items-center
                   justify-center
                   rounded-full
@@ -105,6 +121,30 @@ export default function Header() {
           </div>
         )}
       </header>
+          {/* Mobile Bottom CTA */}
+          <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+            <div className="bg-white border-t border-gray-200 p-4">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="
+                  w-full
+                  rounded-full
+                  bg-[#E13030]
+                  py-3
+                  text-base
+                  font-semibold
+                  text-white
+                  hover:bg-[#c12828]
+                  transition
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-[#E13030]/30
+                "
+              >
+                Request a Quote
+              </button>
+            </div>
+          </div>
 
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
